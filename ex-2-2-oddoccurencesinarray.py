@@ -1,5 +1,5 @@
-import unittest
 import random
+import unittest
 
 # the largest length array we have to handle
 MAX_LENGTH = 1000000
@@ -34,7 +34,7 @@ def solution(A):
 
     # if one unmatched item
     if len(unmatched) == 1:
-        return unmatched.keys()[0]
+        return list(unmatched.keys())[0]
     else:
         raise Exception("Expected one unmatched item, but have this: %s" % unmatched)
 
@@ -45,7 +45,7 @@ def gen_array(L, odd):
     :param odd: the odd integer out
     """
     arr = []
-    for _ in xrange((L-1)/2):
+    for _ in range((L - 1) // 2):
         val = random.randint(1, MAX_LENGTH)
         arr.extend((val, val))
     arr.append(odd)
@@ -55,7 +55,8 @@ def gen_array(L, odd):
 
 class TestOddOccurencesInArray(unittest.TestCase):
     def test_sample_generation(self):
-        print gen_array(5, 1)
+        print
+        gen_array(5, 1)
 
     def test_example1(self):
         arr = [9, 3, 9, 3, 9, 7, 9]
@@ -108,4 +109,3 @@ class TestOddOccurencesInArray(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
