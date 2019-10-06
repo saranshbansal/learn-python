@@ -22,9 +22,9 @@ def solution(N):
     binary_string = str(bin(N))[2:]
 
     # the longest binary gap: use None to indicate no 'gap' yet found (set to zero at the first flip)
-    max_count = None
+    max_gap = None
     # count the bits in the sequence
-    this_count = 0
+    gap = 0
     # true if the last bit was a zero
     was_zero = None
 
@@ -33,29 +33,28 @@ def solution(N):
         is_zero = bit == '0'
 
         # if the bit value has flipped
-        if bool(was_zero) != bool(is_zero):
+        if bool(was_zero) != is_zero:
             # the first sequence doesn't count eg: 1111001 has a result of 2
-            if max_count is None:
-                max_count = 0
+            if max_gap is None:
+                max_gap = 0
             # save the biggest gap
-            elif this_count > max_count:
-                max_count = this_count
+            elif gap > max_gap:
+                max_gap = gap
             # reset the counter
-            this_count = 1
+            gap = 1
         else:
             # increment the length of the sequence
-            this_count += 1
+            gap += 1
 
         # track what the last bit was
         was_zero = is_zero
 
-    #print "%s: %s = %s" % (N, binary_string, max_count)
-    if max_count is not None:
-        return max_count
+    # print "%s: %s = %s" % (N, binary_string, max_gap)
+    if max_gap is not None:
+        return max_gap
     else:
         # no binary gaps found
         return 0
-
 
 
 class TestBinaryGap(unittest.TestCase):

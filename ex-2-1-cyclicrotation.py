@@ -1,5 +1,5 @@
-import unittest
 import random
+import unittest
 
 ARRAY_RANGE = (-1000, 1000)
 INT_RANGE = (0, 100)
@@ -13,13 +13,13 @@ def solution(A, K):
     :return: the rotated array
     """
     # A is empty
-    if not len(A):
+    if not A:
         return A
 
     # netK is the net number of shifts to apply (omits spinning round and round)
     netK = (len(A) + K) % len(A)
     if netK > 0:
-        head = A[len(A)-netK:]
+        head = A[len(A) - netK:]
         tail = A[:-netK]
         return head + tail
     else:
@@ -46,9 +46,10 @@ class TestCyclicRotation(unittest.TestCase):
     def test_random(self):
         N = random.randint(*INT_RANGE)
         K = random.randint(*INT_RANGE)
-        A = [random.randint(*ARRAY_RANGE) for i in xrange(0, N)]
-        print N, K, A
-        print solution(A, K)
+        A = [random.randint(*ARRAY_RANGE) for i in range(0, N)]
+        print(N, K, A)
+        print(solution(A, K), N)
+
 
 if __name__ == '__main__':
     unittest.main()
