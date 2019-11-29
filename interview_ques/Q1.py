@@ -10,3 +10,4 @@ def solution(A, B):
 
 
 print(solution(10, 5))
+
