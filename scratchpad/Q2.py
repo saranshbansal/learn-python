@@ -8,7 +8,7 @@ class MongoUtil:
         print('in start :: {}'.format(param1))
 
     def call_start(self):
-        self.start(10)
+        self.start(20)
 
 
 obj = MongoUtil()
